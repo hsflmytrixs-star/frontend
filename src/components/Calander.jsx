@@ -58,7 +58,7 @@ const Calendar = () => {
         {/* Date Meta */}
         <div className="max-w-3xl mx-auto mt-10 px-4 md:px-0 flex items-center text-gray-500 text-sm space-x-2">
           <CalendarDays className="w-5 h-5" />
-          <span>{blog.date}</span>
+          <span>date={new Date(blog.createdAt).toDateString()}</span>
         </div>
 
         {/* Blog Content */}
