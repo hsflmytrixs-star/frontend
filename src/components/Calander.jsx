@@ -47,7 +47,9 @@ const Calendar = () => {
         {/* Hero Section with background image */}
         <div
           className="w-full h-[60vh] md:h-[80vh] bg-cover bg-center flex items-center justify-center relative"
-          style={{ backgroundImage: `url(https://hsfl-backend.onrender.com${blog.image})` }}
+          style={{
+            backgroundImage: `url(https://hsfl-backend.onrender.com${blog.image})`,
+          }}
         >
           <div className="absolute inset-0 bg-black/50" />
           <h1 className="relative z-10 text-white text-3xl md:text-5xl font-bold text-center px-4 drop-shadow-lg max-w-4xl">
@@ -58,7 +60,7 @@ const Calendar = () => {
         {/* Date Meta */}
         <div className="max-w-3xl mx-auto mt-10 px-4 md:px-0 flex items-center text-gray-500 text-sm space-x-2">
           <CalendarDays className="w-5 h-5" />
-          <span>date={new Date(blog.createdAt).toDateString()}</span>
+          <span>{new Date(blog.createdAt).toDateString()}</span>
         </div>
 
         {/* Blog Content */}
