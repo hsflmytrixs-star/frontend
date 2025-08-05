@@ -42,7 +42,7 @@ const Navbar = () => {
           <li className="relative group">
             <Link to="/about" className="block px-4 py-2 text-gray-70">
               <button className="flex items-center gap-1 hover:text-primary transition-colors focus:outline-none">
-                About us
+                About
               </button>
             </Link>
           </li>
