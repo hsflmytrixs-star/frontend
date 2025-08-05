@@ -2,16 +2,18 @@ import React, { useEffect } from "react";
 import { BookOpen, LogOut, Text } from "lucide-react";
 import useGetAllCourses from "../../hooks/useGetAllCourses";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AdminCourseCard from "./AdminCourseCard";
 import AdminBlogCard from "./AdminBlogCard";
 import useGetAllBlogs from "../../hooks/useGetAllBlogs";
+import { setLoggedInUser } from "../../redux/userSlice";
 
 const AdminPanel = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const user = useSelector((store) => store.User.loggedInUser);
   const courses = useSelector((store) => store.Courses.courses);
-  const blogs = useSelector((store)=>store.Blogs.blogs);
+  const blogs = useSelector((store) => store.Blogs.blogs);
   const fetchCourses = useGetAllCourses();
   const fetchBlogs = useGetAllBlogs();
 
@@ -23,6 +25,15 @@ const AdminPanel = () => {
       fetchBlogs();
     }
   }, [user, navigate, fetchCourses, fetchBlogs]);
+
+  const handleLogout = async (req, res) => {
+    try {
+      dispatch(setLoggedInUser(null));
+      navigate("/admin");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="min-h-screen flex">
@@ -45,6 +56,7 @@ const AdminPanel = () => {
             <span>Add Blogs</span>
           </Link>
           <button
+            onClick={handleLogout}
             className="flex items-center space-x-3 hover:bg-emerald-700 p-3 rounded cursor-pointer transition w-full text-left"
             type="button"
           >
