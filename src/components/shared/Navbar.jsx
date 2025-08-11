@@ -173,12 +173,12 @@ const Navbar = () => {
                   {courses && courses.length > 0 ? (
                     courses.map((course) => (
                       <li key={course._id}>
-                        <Link
-                          to={`/course/${course._id}`}
+                        <div
+                          onClick={() => handleClick(course?._id)}
                           className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
                         >
                           {course.title}
-                        </Link>
+                        </div>
                       </li>
                     ))
                   ) : (
